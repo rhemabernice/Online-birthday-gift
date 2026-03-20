@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>For You ❤️</title>
+
+<style>
+body {
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:'Segoe UI';
+    background: linear-gradient(135deg,#ff9a9e,#fad0c4);
+    overflow:hidden;
+}
+
+/* Card */
+.card {
+    width:350px;
+    padding:30px;
+    border-radius:20px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(20px);
+    text-align:center;
+    color:white;
+    box-shadow:0 20px 40px rgba(0,0,0,0.3);
+}
+
+/* Typing text */
+.typing {
+    border-right:2px solid white;
+    white-space:nowrap;
+    overflow:hidden;
+    animation: typing 2s steps(20), blink 0.5s infinite alternate;
+}
+
+@keyframes typing {
+    from {width:0}
+    to {width:100%}
+}
+@keyframes blink {
+    to {border-color:transparent}
+}
+
+/* Buttons */
+button {
+    margin:10px;
+    padding:10px 20px;
+    border:none;
+    border-radius:25px;
+    background:#ff4d6d;
+    color:white;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover {
+    transform: scale(1.2);
+}
+
+/* Floating hearts */
+.heart {
+    position:absolute;
+    animation: float 6s linear infinite;
+}
+@keyframes float {
+    from {transform: translateY(100vh);}
+    to {transform: translateY(-10vh);}
+}
+
+/* Glow text */
+h1 {
+    text-shadow:0 0 10px white,0 0 20px #ff4d6d;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="card" id="box">
+    <h1 class="typing">Hey you 😏</h1>
+    <p>Ready for something special?</p>
+    <button onclick="q1()">Yes 😌</button>
+    <button onclick="tease()">No 😒</button>
+</div>
+
+<script>
+
+function update(html){
+    document.getElementById("box").innerHTML = html;
+}
+
+/* tease */
+function tease(){
+    update(`
+    <h1>Seriously? 😒</h1>
+    <p>You can't skip this 😏</p>
+    <button onclick="q1()">Fine 😭</button>
+    `);
+}
+
+/* Questions */
+function q1(){
+    update(`
+    <h1>Q1 💖</h1>
+    <p>Do you remember the first time we talked?</p>
+    <button onclick="q2()">Of course ❤️</button>
+    <button onclick="wrong()">No 😑</button>
+    `);
+}
+
+function q2(){
+    update(`
+    <h1>Q2 🥺</h1>
+    <p>Do you miss me when I'm not around?</p>
+    <button onclick="q3()">Always ❤️</button>
+    <button onclick="wrong()">Not really 😒</button>
+    `);
+}
+
+function q3(){
+    update(`
+    <h1>Q3 😏</h1>
+    <p>Who annoys more?</p>
+    <button onclick="q4()">You 😌</button>
+    <button onclick="q4()">Me 😭</button>
+    `);
+}
+
+function q4(){
+    update(`
+    <h1>Q4 💫</h1>
+    <p>Am I your safe place?</p>
+    <button onclick="q5()">Yes 🥺</button>
+    <button onclick="wrong()">No 😑</button>
+    `);
+}
+
+function q5(){
+    update(`
+    <h1>Q5 💖</h1>
+    <p>Would you choose me again?</p>
+    <button onclick="q6()">Always ❤️</button>
+    <button onclick="wrong()">No 😒</button>
+    `);
+}
+
+function q6(){
+    update(`
+    <h1>Final Question 😌</h1>
+    <p>Will you stay with me forever?</p>
+    <button onclick="final()">YES ❤️</button>
+    <button onclick="wrong()">No 😤</button>
+    `);
+}
+
+/* wrong */
+function wrong(){
+    update(`
+    <h1>Wrong answer 😒</h1>
+    <p>You better try again 😏</p>
+    <button onclick="q1()">Retry 💖</button>
+    `);
+}
+
+/* final */
+function final(){
+    update(`
+    <h1>Happy Birthday ❤️</h1>
+    <p>You are my favorite person 🥺</p>
+    <p>I miss you more than words can say my dear...</p>
+    <p>Distance means nothing when you mean everything 💖</p>
+    <h2>Forever yours and only yours  ❤️</h2>
+    `);
+}
+
+/* hearts */
+setInterval(()=>{
+    let h=document.createElement("div");
+    h.className="heart";
+    h.innerHTML="❤️";
+    h.style.left=Math.random()*100+"vw";
+    h.style.fontSize=(Math.random()*20+15)+"px";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),6000);
+},200);
+
+</script>
+
+</body>
+</html>
